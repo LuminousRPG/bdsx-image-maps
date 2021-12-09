@@ -8,7 +8,7 @@ import { CxxString } from "bdsx/nativetype";
 const fs = require("fs");
 const path = require("path");
 
-command.register("map", "Map command", CommandPermissionLevel.Operator).overload(async(p, origin, output) => {
+command.register("map_", "Map command", CommandPermissionLevel.Operator).overload(async(p, origin, output) => {
     const actor = origin.getEntity();
     if(!(actor instanceof Player)) return;
 
