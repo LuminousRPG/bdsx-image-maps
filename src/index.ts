@@ -1,16 +1,16 @@
-import { NativeClass } from "bdsx/nativeclass";
-import { ProcHacker } from "bdsx/prochacker";
-import { pdb } from "bdsx/core";
-import { MapItemSavedData } from "./map-data";
+import { ActorUniqueID } from "bdsx/bds/actor";
 import { Level } from "bdsx/bds/level";
 import { CompoundTag } from "bdsx/bds/nbt";
-import { events } from "bdsx/event";
-import { UNDNAME_NAME_ONLY } from "bdsx/dbghelp";
-import { int32_t, void_t } from "bdsx/nativetype";
-import { ActorUniqueID } from "bdsx/bds/actor";
-import { Player } from "bdsx/bds/player";
 import { TextPacket } from "bdsx/bds/packets";
+import { Player } from "bdsx/bds/player";
 import { serverInstance } from "bdsx/bds/server";
+import { pdb } from "bdsx/core";
+import { UNDNAME_NAME_ONLY } from "bdsx/dbghelp";
+import { events } from "bdsx/event";
+import { NativeClass } from "bdsx/nativeclass";
+import { int32_t, void_t } from "bdsx/nativetype";
+import { ProcHacker } from "bdsx/prochacker";
+import { MapItemSavedData } from "./map-data";
 
 const path = require("path");
 const fs = require("fs");
@@ -53,7 +53,7 @@ export function getLevelStorage(): LevelStorage {
 }
 
 export function sendMessage(player: Player, message: string, type: TextPacket.Types = 1): void {
-    const pk = TextPacket.create();
+    const pk = TextPacket.allocate();
     pk.type = type;
     pk.message = message;
     player.sendPacket(pk);
